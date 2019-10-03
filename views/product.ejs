@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <link href="/assets/product_styles.css" rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <% include partials/header.ejs %>
+
+        <h1>Product</h1>
+        <br>
+        <img src="/assets/productImages/ID<%= data[0].id %>.jpg" alt="<%= data[0].name%>"> 
+        <br>
+        <h1><%= data[0].name %> - $<%= data[0].price %></h1>
+        <br>
+        <p>Made by <%= data[0].manufacturer %> in <%= data[0].origin %></p>
+        <br>
+        <p><%= data[0].description %></p>
+        <br>
+        <!--<input type='button' value=<%= data[0].id %>>-->
+    </body>
+</html>
