@@ -1,8 +1,5 @@
 var express = require('express');
 var app = express();
-var cookieParser = require('cookie-parser');
-
-app.use(cookieParser());
 
 // My router import
 var router = require('./router.js');

@@ -1,7 +1,7 @@
 {
-  "name": "testproj",
-  "version": "1.0.0",
-  "description": "A test Project",
+  "name": "gamazon",
+  "version": "0.0.0",
+  "description": "A storefront website",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.4",
     "ejs": "^2.6.2",
     "express": "^4.17.1",
     "mysql": "^2.17.1"
