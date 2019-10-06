@@ -1,8 +1,11 @@
+<script type="text/javascript" src="./../models/headerModel.js"></script>
+
 <style>
     .header {
-        padding: 60px;
-        text-align: left;
+        padding: 15px;
+        /* text-align: left; */
         background: #05a962;
+        border: 5px solid blue;
     }
 
     .logo {
@@ -11,19 +14,45 @@
     }
 
     .logo_text {
-        width: 25%;
+        width: 23%;
         height: auto;
+    }
+
+    .navigation{
+        text-align: right;
+        display:inline-block;
+        /* float: right; */
+        border: 5px solid purple;
+    }
+
+    .logos {
+        border: 5px solid red;
+        float: left;
+    }
+
+    .new_user {
+        float: right;
     }
 </style>
 
 <div class = "header">
-    <img src = "/assets/logo.png" class = "logo">
-    <img src = "/assets/logo2.png" alt = "GAMAZON" class = "logo_text">
+    <div class = "logos">
+        <a href="./"><img src = "/assets/logo.png" class = "logo"></a>
+        <a href="./"><img src = "/assets/logo2.png" alt = "GAMAZON" class = "logo_text"></a>
+    </div>
 
-    <nav>
+    <nav class = "navigation">
         <ul>
             <li><a href="">Home</a></li>
             <li><a href="">Contact</a></li>
         </ul>
     </nav>
+
+    <form class = "new_user" method = "POST" action = "/">
+        Create a new account:<br>
+        First name: <input type = "text" name="first_name"><br>
+        Last name: <input type = "text" name="last_name"><br>
+        Username: <input type = "text" name="username">
+        <input type = "submit" value="Submit" onclick="createNewUser(new_user.first_name.value, new_user.last_name.value, new_user.username.value)">
+    </form>
 </div>

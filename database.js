@@ -1,3 +1,5 @@
+// I have the database here so that I can include it in other files and it will be the same database. Maybe theres a better way to do this.
+
 var mysql = require('mysql');
 
 // Create connection to db
