@@ -20,3 +20,7 @@ MVC stand for Model View Controller. Its is a software design pattern that helps
     - Processes requests
     - Gets data from the model
     - Passes data to the view
+
+## MYSQL
+- Command for exporting a database:
+`mysqldump -u root -p mydb > "D:\Projects\Programming\Web Based\Node.js\gamazon\export.sql"`
