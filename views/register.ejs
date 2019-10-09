@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <link href="/assets/register_styles.css" rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <% include partials/header.ejs %>
+
+        <h1>Register</h1>
+        <br>
+        <form class = "new_user" method = "POST" action = "/createNewUser">
+            <h3>Create a new account:</h3><br>
+            First name: <input type = "text" name="first_name" required><br>
+            Last name: <input type = "text" name="last_name" required><br>
+            Username: <input type = "text" name="username" required><br>
+            Password: <input type = "text" name="password" required>
+            <input type = "submit" value="Register">
+        </form>
+
+        <a href="/login">Login</a>
+    </body>
+</html>

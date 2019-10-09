@@ -2,10 +2,13 @@
 
 <style>
     .header {
-        padding: 15px;
+        padding: 20px;
         /* text-align: left; */
         background: #05a962;
         border: 5px solid blue;
+        overflow: overlay;
+        /* overflow:auto;  */
+        display:inline-block;
     }
 
     .logo {
@@ -32,6 +35,12 @@
 
     .new_user {
         float: right;
+        border: 5px solid yellow;
+    }
+
+    .returning_user {
+        float: right;
+        border: 5px solid orange;
     }
 </style>
 
@@ -48,11 +57,7 @@
         </ul>
     </nav>
 
-    <form class = "new_user" method = "POST" action = "/">
-        Create a new account:<br>
-        First name: <input type = "text" name="first_name"><br>
-        Last name: <input type = "text" name="last_name"><br>
-        Username: <input type = "text" name="username">
-        <input type = "submit" value="Submit" onclick="createNewUser(new_user.first_name.value, new_user.last_name.value, new_user.username.value)">
+    <form class = "new_user" method = "POST" action = "/createNewUser">
+        <input type = "submit" value="Logout">
     </form>
 </div>
