@@ -18,6 +18,9 @@
         <br>
         <p><%= data[0].description %></p>
         <br>
+        <form class = "addToCart" method = "POST" action = "/product/<%= data[0].product_id %>">
+            <input type = "submit" value="Add To Cart">
+        </form>
         <!--<input type='button' value=<%= data[0].id %>>-->
     </body>
 </html>

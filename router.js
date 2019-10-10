@@ -11,6 +11,8 @@ var productController = require('./controllers/productController');
 var accountController = require('./controllers/accountController');
 var loginController = require('./controllers/loginController');
 var registerController = require('./controllers/registerController');
+var logoutController = require('./controllers/logoutController');
+var pageNotFoundController = require('./controllers/pageNotFoundController');
 
 // var headerController = require('./controllers/headerController');
 
@@ -56,6 +58,18 @@ router.post("/login", urlencodedParser, (request, responce) => {
 
 router.post("/register", urlencodedParser, (request, responce) => {
     registerController(router, request, responce, "POST");
+});
+
+router.post("/logout", urlencodedParser, (request, responce) => {
+    logoutController(router, request, responce);
+});
+
+/////////////////////////////////
+/////         404         ///////
+/////////////////////////////////
+// Keep as the last call
+router.use(function(request, responce){
+    pageNotFoundController(router, request, responce);
 });
 
 //export the router
