@@ -22,15 +22,15 @@ var pageNotFoundController = require('./controllers/pageNotFoundController');
 router.get('/', (request, responce) => {
     // var {userID} = req.session;
     // console.log(userID);
-    homeController(router , request, responce);
+    homeController(request, responce);
 });
 
 router.get('/catalog', (request, responce) => {
-    catalogController(router , request, responce);
+    catalogController(request, responce);
 });
 
 router.get('/product/:id', (request, responce) => {
-    productController(router , request, responce);
+    productController(request, responce);
 });
 
 router.get('/product', (request, responce) => {
@@ -38,30 +38,30 @@ router.get('/product', (request, responce) => {
 });
 
 router.get('/youraccount', (request, responce) => {
-    accountController(router , request, responce);
+    accountController(request, responce);
 });
 
 router.get("/login", (request, responce) => {
-    loginController(router , request, responce, "GET");
+    loginController(request, responce, "GET");
 });
 
 router.get("/register", (request, responce) => {
-    registerController(router , request, responce, "GET");
+    registerController(request, responce, "GET");
 });
 
 /////////////////////////////////
 /////    Post Requests    ///////
 /////////////////////////////////
 router.post("/login", urlencodedParser, (request, responce) => {
-    loginController(router , request, responce, "POST");
+    loginController(request, responce, "POST");
 });
 
 router.post("/register", urlencodedParser, (request, responce) => {
-    registerController(router, request, responce, "POST");
+    registerController(request, responce, "POST");
 });
 
 router.post("/logout", urlencodedParser, (request, responce) => {
-    logoutController(router, request, responce);
+    logoutController(request, responce);
 });
 
 /////////////////////////////////
@@ -69,7 +69,7 @@ router.post("/logout", urlencodedParser, (request, responce) => {
 /////////////////////////////////
 // Keep as the last call
 router.use(function(request, responce){
-    pageNotFoundController(router, request, responce);
+    pageNotFoundController(request, responce);
 });
 
 //export the router

@@ -1,6 +1,6 @@
 var loginModel = require('./../models/loginModel');
 
-module.exports = function(app, request, responce, mode){
+module.exports = function(request, responce, mode){
     console.log("Login Controller Fired with mode " + mode);
     
     if (mode == "GET") {

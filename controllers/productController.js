@@ -1,6 +1,6 @@
 var productModel = require('./../models/productModel');
 
-module.exports = function(app, request, responce){
+module.exports = function(request, responce){
     console.log("Product Controller Fired with id " + request.params.id);
     
     productModel.getProduct(request.params.id, (data) => {

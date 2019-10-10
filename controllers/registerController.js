@@ -1,6 +1,6 @@
 var registerModel = require('./../models/registerModel');
 
-module.exports = function(app, request, responce, mode){
+module.exports = function(request, responce, mode){
     console.log("Register Controller Fired with mode " + mode);
     
     if (mode == "GET") {

@@ -1,4 +1,4 @@
-module.exports = function(app, request, responce){
+module.exports = function(request, responce){
     console.log("Logout Controller fired for user " + request.session.userID);
     request.session.destroy(err => {
         if (err) {
