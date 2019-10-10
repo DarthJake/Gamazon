@@ -1,7 +1,7 @@
 var data = [{item: 'get milk'}, {item: 'die'}, {item: 'walk dog'}];
 
-module.exports = function(app, req, res){
+module.exports = function(app, request, responce){
     console.log("Home Controller Fired");
-    res.render('home', {stuff: data});
+    responce.render('home', {"stuff": data, "request": request});
 
 }

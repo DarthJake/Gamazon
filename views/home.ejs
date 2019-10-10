@@ -6,7 +6,7 @@
         <link href="/assets/styles.css" rel='stylesheet' type='text/css' />
     </head>
     <body>
-        <% include partials/header.ejs %>
+        <%- include('partials/header', {request: request}); %>
         <h1>Wecome to <span style='color:green;'>Gamazon</span></h1>
         
         <a href="./catalog"><h3>Buy Stuff</h3></a>

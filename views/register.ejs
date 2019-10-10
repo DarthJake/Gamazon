@@ -6,11 +6,11 @@
         <link href="/assets/register_styles.css" rel='stylesheet' type='text/css' />
     </head>
     <body>
-        <% include partials/header.ejs %>
+        <%- include('partials/header', {request: request}); %>
 
         <h1>Register</h1>
         <br>
-        <form class = "new_user" method = "POST" action = "/createNewUser">
+        <form class = "registerForm" method = "POST" action = "/register">
             <h3>Create a new account:</h3><br>
             First name: <input type = "text" name="first_name" required><br>
             Last name: <input type = "text" name="last_name" required><br>

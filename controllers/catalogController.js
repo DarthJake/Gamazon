@@ -1,5 +1,5 @@
-module.exports = function(app, req, res){
-    console.log("Catalog Controller Fired with page " + req.query.page);
-    var page = req.query.page;
-    res.render('catalog', {page});
+module.exports = function(app, request, responce){
+    console.log("Catalog Controller Fired with page " + request.query.page);
+    var page = request.query.page;
+    responce.render('catalog', {"page": page, "request": request}); // This could be a problem. I changed {page} to {"page": page, "request": request}
 }

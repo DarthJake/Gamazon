@@ -22,7 +22,7 @@
     }
 
     .navigation{
-        text-align: right;
+        text-align: left;
         display:inline-block;
         /* float: right; */
         border: 5px solid purple;
@@ -45,19 +45,28 @@
 </style>
 
 <div class = "header">
+    <% const { userID } = request.session; %>
     <div class = "logos">
         <a href="./"><img src = "/assets/logo.png" class = "logo"></a>
         <a href="./"><img src = "/assets/logo2.png" alt = "GAMAZON" class = "logo_text"></a>
     </div>
 
     <nav class = "navigation">
+        <p>Welcome back </p>
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <% if(userID){ %>
+                <li>
+                    <form method = 'POST' action = '/logout'><button>Logout</button></form>
+                </li>
+            <% } else { %>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register">Register</a></li>
+            <% } %>
         </ul>
     </nav>
 
-    <form class = "new_user" method = "POST" action = "/createNewUser">
+    <!-- <form class = "new_user" method = "POST" action = "/createNewUser">
         <input type = "submit" value="Logout">
-    </form>
+    </form> -->
 </div>

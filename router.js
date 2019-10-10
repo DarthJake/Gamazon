@@ -14,38 +14,48 @@ var registerController = require('./controllers/registerController');
 
 // var headerController = require('./controllers/headerController');
 
-router.get('/', function(req, res){
+/////////////////////////////////
+/////     Get Requests    ///////
+/////////////////////////////////
+router.get('/', (request, responce) => {
     // var {userID} = req.session;
     // console.log(userID);
-    homeController(router , req, res);
+    homeController(router , request, responce);
 });
 
-// router.post('/createNewUser', urlencodedParser, function(req, res){
-//     headerController(router, req, res);
-// });
-
-router.get('/catalog', function(req, res){
-    catalogController(router , req, res);
+router.get('/catalog', (request, responce) => {
+    catalogController(router , request, responce);
 });
 
-router.get('/product/:id', function(req, res){
-    productController(router , req.params.id, res);
+router.get('/product/:id', (request, responce) => {
+    productController(router , request, responce);
 });
 
-router.get('/product', function(req, res){
-    res.redirect("/catalog");
+router.get('/product', (request, responce) => {
+    responce.redirect("/catalog");
 });
 
-router.get('/youraccount', function(req, res){
-    accountController(router , req, res);
+router.get('/youraccount', (request, responce) => {
+    accountController(router , request, responce);
 });
 
-router.get("/login", function(req, res){
-    loginController(router , req, res);
+router.get("/login", (request, responce) => {
+    loginController(router , request, responce, "GET");
 });
 
-router.get("/register", function(req, res){
-    registerController(router , req, res);
+router.get("/register", (request, responce) => {
+    registerController(router , request, responce, "GET");
+});
+
+/////////////////////////////////
+/////    Post Requests    ///////
+/////////////////////////////////
+router.post("/login", urlencodedParser, (request, responce) => {
+    loginController(router , request, responce, "POST");
+});
+
+router.post("/register", urlencodedParser, (request, responce) => {
+    registerController(router, request, responce, "POST");
 });
 
 //export the router

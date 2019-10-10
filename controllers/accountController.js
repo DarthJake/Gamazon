@@ -1,7 +1,7 @@
 var data = [{item: 'get milk'}, {item: 'die'}, {item: 'walk dog'}];
 
-module.exports = function(app, req, res){
+module.exports = function(app, request, responce){
     console.log("Account Controller fired with ");
-    res.render('account', {stuff: data});
+    responce.render('account', {"stuff": data, "request": request});
 
 }

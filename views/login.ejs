@@ -6,11 +6,11 @@
         <link href="/assets/login_styles.css" rel='stylesheet' type='text/css' />
     </head>
     <body>
-        <% include partials/header.ejs %>
+        <%- include('partials/header', {request: request}); %>
 
         <h1>Login</h1>
         <br>
-        <form class = "returning_user" method = "POST" action = "/login">
+        <form class = "login" method = "POST" action = "/login">
             <h3>Login to your account:</h3><br>
             Username: <input type = "text" name="username" required><br>
             Password: <input type = "text" name="password" required>
