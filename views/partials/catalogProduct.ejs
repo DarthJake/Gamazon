@@ -1,0 +1,19 @@
+<style>
+.product {
+    display: inline-block;
+    border: 5px solid black;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+.picture {
+    background-color: green;
+    background-position: center;
+    height: 400px;
+    width: 300px;
+    overflow: hidden;
+}
+</style>
+
+<div class = product>
+    <a href="/product/<%= product_id %>"><div class="picture" style="background-image: url('/assets/productImages/ID<%= product_id %>.jpg');"></div></a>
+</div>

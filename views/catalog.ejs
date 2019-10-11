@@ -7,9 +7,10 @@
     </head>
     <body>
         <%- include('partials/header', {request: request}); %>
-        <h1>Catalog</h1>
-        <br><br>
-        <h1>Page <%= page %></h1>
+        <h1>Catalog Page <%= page %></h1>
 
+        <% for (var product of productIDs) { %>
+            <%- include('partials/catalogProduct', {"product_id": product.product_id}); %>
+        <% } %>
     </body>
 </html>

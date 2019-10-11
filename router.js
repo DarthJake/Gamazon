@@ -68,9 +68,9 @@ router.post("/logout", urlencodedParser, (request, responce) => {
 /////         404         ///////
 /////////////////////////////////
 // Keep as the last call
-router.use(function(request, responce){
-    pageNotFoundController(request, responce);
-});
+// router.use(function(request, responce){ // Is being BUGGYYYY!!!
+//     pageNotFoundController(request, responce);
+// });
 
 //export the router
 module.exports = router; // Just in case
