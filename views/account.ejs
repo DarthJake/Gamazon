@@ -8,11 +8,13 @@
     <body>
         <%- include('partials/header', {request: request}); %>
         <h1>Account</h1>
-
-        <ul>
-            <% for(var i = 0; i < stuff.length; i++){ %>
-                <li><%= stuff[i].item %></li>
-            <% } %>
-        </ul>
+        <div class="cart">
+            <h2>Your Cart has <%= cart.length %> item(s):</h2>
+            <ul>
+                <% for (var item of cart) { %>
+                    <li><%= item.quantity %>x <a href="/product/<%= item.product_id %>"><%= item.name %></a></li>
+                <% } %>
+            </ul>
+        </div>
     </body>
 </html>

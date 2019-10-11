@@ -30,14 +30,14 @@ router.get('/catalog', (request, responce) => {
 });
 
 router.get('/product/:id', (request, responce) => {
-    productController(request, responce);
+    productController(request, responce, "GET");
 });
 
 router.get('/product', (request, responce) => {
     responce.redirect("/catalog");
 });
 
-router.get('/youraccount', (request, responce) => {
+router.get('/account', (request, responce) => {
     accountController(request, responce);
 });
 
@@ -52,6 +52,10 @@ router.get("/register", (request, responce) => {
 /////////////////////////////////
 /////    Post Requests    ///////
 /////////////////////////////////
+router.post('/product/:id', urlencodedParser, (request, responce) => {
+    productController(request, responce, "POST");
+});
+
 router.post("/login", urlencodedParser, (request, responce) => {
     loginController(request, responce, "POST");
 });

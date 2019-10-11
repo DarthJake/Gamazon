@@ -17,10 +17,13 @@
         <p>Made by <%= data[0].manufacturer %> in <%= data[0].origin %></p>
         <br>
         <p><%= data[0].description %></p>
-        <br>
-        <form class = "addToCart" method = "POST" action = "/product/<%= data[0].product_id %>">
-            <input type = "submit" value="Add To Cart">
-        </form>
-        <!--<input type='button' value=<%= data[0].id %>>-->
+        <% const { userID } = request.session; %>
+        <% if(userID){ %>
+            <br>
+            <form class = "addToCart" method = "POST" action = "/product/<%= data[0].product_id %>">
+                <input type="number" name="quantity" min="1" max="99" value="1">
+                <input type = "submit" value="Add To Cart">
+            </form>
+        <% } %>
     </body>
 </html>
