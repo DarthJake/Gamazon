@@ -38,7 +38,7 @@ router.get('/product', (request, responce) => {
 });
 
 router.get('/account', (request, responce) => {
-    accountController(request, responce);
+    accountController(request, responce, "GET");
 });
 
 router.get("/login", (request, responce) => {
@@ -54,6 +54,10 @@ router.get("/register", (request, responce) => {
 /////////////////////////////////
 router.post('/product/:id', urlencodedParser, (request, responce) => {
     productController(request, responce, "POST");
+});
+
+router.post("/account", urlencodedParser, (request, responce) => {
+    accountController(request, responce, "POST")
 });
 
 router.post("/login", urlencodedParser, (request, responce) => {

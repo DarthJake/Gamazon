@@ -13,6 +13,16 @@ var getCart = function(user_id, callback) {
 
 }
 
+var purchase = function(user_id) {
+    console.log('Account Model purchase called with user_id: ' + user_id);
+    db.query(`DELETE FROM carts WHERE user_id = ${user_id};`, (err, results, fields) => {
+        if (err) {
+            throw err;
+        }
+    });
+}
+
 module.exports = {
-    getCart: getCart
+    getCart: getCart,
+    purchase: purchase
 };

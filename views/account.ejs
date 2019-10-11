@@ -15,6 +15,11 @@
                     <li><%= item.quantity %>x <a href="/product/<%= item.product_id %>"><%= item.name %></a></li>
                 <% } %>
             </ul>
+            <% if (cart.length > 0) { %>
+                <form class = "login" method = "POST" action = "/account">
+                    <input type = "submit" value="Purchase!">
+                </form>
+            <% } %>
         </div>
     </body>
 </html>
