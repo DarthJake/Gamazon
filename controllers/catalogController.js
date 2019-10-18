@@ -9,7 +9,7 @@ module.exports = function(request, responce){
     }
 
     catalogModel.getProductIDs(page, (productIDs) => {
-        console.log("From Product Controller: ");
+        console.log("From Catalog Controller: ");
         console.log(productIDs);
         responce.render('catalog', {"page": page, "request": request, "productIDs": productIDs});
     });
