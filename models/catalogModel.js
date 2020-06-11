@@ -1,5 +1,5 @@
 var db = require('./../database');
-const PRODUCTS_PER_PAGE = 12;
+const PRODUCTS_PER_PAGE = 9;
 
 // ejs will take care of putting the image and link from the id.
 // I need to put page number so that I dont send the whole list of products to ejs.

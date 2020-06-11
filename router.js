@@ -72,6 +72,24 @@ router.post("/logout", urlencodedParser, (request, responce) => {
     logoutController(request, responce);
 });
 
+router.post("/venderImageUpload", urlencodedParser, (request, responce) =>{
+    // var keyName1=request.body;
+    // console.log(request.files.pictureFile);
+    if (!request.files || Object.keys(request.files).length === 0) {
+        return responce.status(400).send('No files were uploaded.\n\n');
+    }
+
+    let pictureFile = request.files.pictureFile;
+
+    pictureFile.mv('./pictureFile.jpg', function(err) {
+        if (err){
+          return responce.status(500).send(err);
+        }
+    
+        responce.send('File uploaded!');
+    });
+});
+
 /////////////////////////////////
 /////         404         ///////
 /////////////////////////////////

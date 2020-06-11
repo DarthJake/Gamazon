@@ -16,9 +16,11 @@
                 <% } %>
             </ul>
             <% if (cart.length > 0) { %>
-                <form class = "login" method = "POST" action = "/account">
+                <form class = "purchase" method = "POST" action = "/account">
                     <input type = "submit" value="Purchase!">
                 </form>
+            <% } else { %>
+                <h3>You have nothing in your cart!</h3>
             <% } %>
         </div>
     </body>

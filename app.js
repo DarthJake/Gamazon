@@ -1,6 +1,10 @@
 var express = require('express');
 var session = require('express-session');
+var fileUpload = require('express-fileupload');
 var app = express();
+
+// Setup fileUpload
+app.use(fileUpload());
 
 // My router import
 var router = require('./router.js');

@@ -1,12 +1,7 @@
 ﻿  VenderProgram.cpp
-C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\VenderProgram.cpp(33,12): warning C4101: 'results': unreferenced local variable
-C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\VenderProgram.cpp(76,11): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 1 has type 'std::string'
-C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\VenderProgram.cpp(76,11): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 3 has type 'std::string'
-C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\VenderProgram.cpp(76,11): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 4 has type 'std::string'
-C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\VenderProgram.cpp(76,11): warning C4477: 'printf' : format string '%s' requires an argument of type 'char *', but variadic argument 5 has type 'std::string'
+C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\VenderProgram.cpp(73,9): warning C4101: 'productPrice': unreferenced local variable
   Generating code
-C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\VenderProgram.cpp(53): warning C4715: 'insertQuery': not all control paths return a value
-  2 of 151 functions ( 1.3%) were compiled, the rest were copied from previous compilation.
+  2 of 131 functions ( 1.5%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
