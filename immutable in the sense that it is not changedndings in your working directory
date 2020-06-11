@@ -1,281 +1,0 @@
-warning: LF will be replaced by CRLF in node_modules/bignumber.js/package.json.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/ejs/README.md.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/ejs/ejs.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/ejs/ejs.min.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/ejs/lib/ejs.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/ejs/package.json.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/express-session/HISTORY.md.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/express-session/README.md.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/express-session/index.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/express-session/package.json.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/Changes.md.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/Readme.md.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/Connection.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/ConnectionConfig.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/protocol/constants/errors.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/protocol/constants/ssl_profiles.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/protocol/constants/types.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/protocol/packets/EmptyPacket.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/protocol/packets/ResultSetHeaderPacket.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/protocol/packets/index.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/lib/protocol/sequences/Query.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/mysql/package.json.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/readable-stream/.travis.yml.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/readable-stream/lib/_stream_duplex.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/readable-stream/lib/_stream_passthrough.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/readable-stream/lib/_stream_readable.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/readable-stream/lib/_stream_transform.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/readable-stream/lib/_stream_writable.js.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in node_modules/readable-stream/package.json.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in package-lock.json.
-The file will have its original line endings in your working directory
-warning: LF will be replaced by CRLF in package.json.
-The file will have its original line endings in your working directory
-[1mdiff --git a/app.js b/app.js[m
-[1mindex 67168f5..f9929db 100644[m
-[1m--- a/app.js[m
-[1m+++ b/app.js[m
-[36m@@ -1,7 +1,11 @@[m
- var express = require('express');[m
- var session = require('express-session');[m
-[32m+[m[32mvar fileUpload = require('express-fileupload');[m[41m[m
- var app = express();[m
- [m
-[32m+[m[32m// Setup fileUpload[m[41m[m
-[32m+[m[32mapp.use(fileUpload());[m[41m[m
-[32m+[m[41m[m
- // My router import[m
- var router = require('./router.js');[m
- [m
-[1mdiff --git a/controllers/catalogController.js b/controllers/catalogController.js[m
-[1mindex f401711..7f85959 100644[m
-[1m--- a/controllers/catalogController.js[m
-[1m+++ b/controllers/catalogController.js[m
-[36m@@ -3,9 +3,9 @@[m [mvar catalogModel = require('./../models/catalogModel');[m
- module.exports = function(request, responce){[m
-     console.log("Catalog Controller Fired with page " + request.query.page);[m
-     var page = request.query.page;[m
-[31m-    if (typeof(page) == 'undefined') {[m
-[32m+[m[32m    if (typeof(page) == 'undefined' || page < 1) {[m[41m[m
-         page = 1;[m
-[31m-        console.log("Since page was undefined its now 1.")[m
-[32m+[m[32m        console.log("Since page was undefined/less than 1, its now 1.")[m[41m[m
-     }[m
- [m
-     catalogModel.getProductIDs(page, (productIDs) => {[m
-[1mdiff --git a/models/catalogModel.js b/models/catalogModel.js[m
-[1mindex 4538769..a7a2ca1 100644[m
-[1m--- a/models/catalogModel.js[m
-[1m+++ b/models/catalogModel.js[m
-[36m@@ -1,5 +1,5 @@[m
- var db = require('./../database');[m
-[31m-const PRODUCTS_PER_PAGE = 12;[m
-[32m+[m[32mconst PRODUCTS_PER_PAGE = 9;[m[41m[m
- [m
- // ejs will take care of putting the image and link from the id.[m
- // I need to put page number so that I dont send the whole list of products to ejs.[m
-[1mdiff --git a/node_modules/bignumber.js/CHANGELOG.md b/node_modules/bignumber.js/CHANGELOG.md[m
-[1mindex 4759fdd..e288a93 100644[m
-[1m--- a/node_modules/bignumber.js/CHANGELOG.md[m
-[1m+++ b/node_modules/bignumber.js/CHANGELOG.md[m
-[36m@@ -1,3 +1,47 @@[m
-[32m+[m[32m#### 9.0.0[m[41m[m
-[32m+[m[32m* 27/05/2019[m[41m[m
-[32m+[m[32m* For compatibility with legacy browsers, remove `Symbol` references.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m#### 8.1.1[m[41m[m
-[32m+[m[32m* 24/02/2019[m[41m[m
-[32m+[m[32m* [BUGFIX] #222 Restore missing `var` to `export BigNumber`.[m[41m[m
-[32m+[m[32m* Allow any key in BigNumber.Instance in *bignumber.d.ts*.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m#### 8.1.0[m[41m[m
-[32m+[m[32m* 23/02/2019[m[41m[m
-[32m+[m[32m* [NEW FEATURE] #220 Create a BigNumber using `{s, e, c}`.[m[41m[m
-[32m+[m[32m* [NEW FEATURE] `isBigNumber`: if `BigNumber.DEBUG` is `true`, also check that the BigNumber instance is well-formed.[m[41m[m
-[32m+[m[32m* Remove `instanceof` checks; just use `_isBigNumber` to identify a BigNumber instance.[m[41m[m
-[32m+[m[32m* Add `_isBigNumber` to prototype in *bignumber.mjs*.[m[41m[m
-[32m+[m[32m* Add tests for BigNumber creation from object.[m[41m[m
-[32m+[m[32m* Update *API.html*.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m#### 8.0.2[m[41m[m
-[32m+[m[32m* 13/01/2019[m[41m[m
-[32m+[m[32m* #209 `toPrecision` without argument should follow `toString`.[m[41m[m
-[32m+[m[32m* Improve *Use* section of *README*.[m[41m[m
-[32m+[m[32m* Optimise `toString(10)`.[m[41m[m
-[32m+[m[32m* Add verson number to API doc.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m#### 8.0.1[m[41m[m
-[32m+[m[32m* 01/11/2018[m[41m[m
-[32m+[m[32m* Rest parameter must be array type in *bignumber.d.ts*.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m#### 8.0.0[m[41m[m
-[32m+[m[32m* 01/11/2018[m[41m[m
-[32m+[m[32m* [NEW FEATURE] Add `BigNumber.sum` method.[m[41m[m
-[32m+[m[32m* [NEW FEATURE]`toFormat`: add `prefix` and `suffix` options.[m[41m[m
-[32m+[m[32m* [NEW FEATURE] #178 Pass custom formatting to `toFormat`.[m[41m[m
-[32m+[m[32m* [BREAKING CHANGE] #184 `toFraction`: return array of BigNumbers not strings.[m[41m[m
-[32m+[m[32m* [NEW FEATURE] #185 Enable overwrite of `valueOf` to prevent accidental addition to string.[m[41m[m
-[32m+[m[32m* #183 Add Node.js `crypto` requirement to documentation.[m[41m[m
-[32m+[m[32m* [BREAKING CHANGE] #198 Disallow signs and whitespace in custom alphabet.[m[41m[m
-[32m+[m[32m* [NEW FEATURE] #188 Implement `util.inspect.custom` for Node.js REPL.[m[41m[m
-[32m+[m[32m* #170 Make `isBigNumber` a type guard in *bignumber.d.ts*.[m[41m[m
-[32m+[m[32m* [BREAKING CHANGE] `BigNumber.min` and `BigNumber.max`: don't accept an array.[m[41m[m
-[32m+[m[32m* Update *.travis.yml*.[m[41m[m
-[32m+[m[32m* Remove *bower.json*.[m[41m[m
-[32m+[m[41m[m
- #### 7.2.1[m
- * 24/05/2018[m
- * Add `browser` field to *package.json*.[m
-[1mdiff --git a/node_modules/bignumber.js/LICENCE b/node_modules/bignumber.js/LICENCE[m
-[1mindex 3a2a4de..87a9b15 100644[m
-[1m--- a/node_modules/bignumber.js/LICENCE[m
-[1m+++ b/node_modules/bignumber.js/LICENCE[m
-[36m@@ -1,6 +1,6 @@[m
- The MIT Licence.[m
- [m
-[31m-Copyright (c) 2018 Michael Mclaughlin[m
-[32m+[m[32mCopyright (c) 2019 Michael Mclaughlin[m[41m[m
- [m
- Permission is hereby granted, free of charge, to any person obtaining[m
- a copy of this software and associated documentation files (the[m
-[1mdiff --git a/node_modules/bignumber.js/README.md b/node_modules/bignumber.js/README.md[m
-[1mindex 0adaa79..fc3c84c 100644[m
-[1m--- a/node_modules/bignumber.js/README.md[m
-[1m+++ b/node_modules/bignumber.js/README.md[m
-[36m@@ -40,18 +40,17 @@[m [mBrowser:[m
- [Node.js](http://nodejs.org):[m
- [m
- ```bash[m
-[31m-$ npm install --save bignumber.js[m
-[32m+[m[32m$ npm install bignumber.js[m[41m[m
- ```[m
- [m
- ```javascript[m
-[31m-var BigNumber = require('bignumber.js');[m
-[32m+[m[32mconst BigNumber = require('bignumber.js');[m[41m[m
- ```[m
- [m
-[31m-ES6 module (*bignumber.mjs*):[m
-[32m+[m[32mES6 module:[m[41m[m
- [m
- ```javascript[m
-[31m-//import BigNumber from 'bignumber.js';[m
-[31m-import {BigNumber} from 'bignumber.js';[m
-[32m+[m[32mimport BigNumber from "./bignumber.mjs"[m[41m[m
- ```[m
- [m
- AMD loader libraries such as [requireJS](http://requirejs.org/):[m
-[36m@@ -64,50 +63,57 @@[m [mrequire(['bignumber'], function(BigNumber) {[m
- [m
- ## Use[m
- [m
-[31m-*In all examples below, `var`, semicolons and `toString` calls are not shown.[m
-[31m-If a commented-out value is in quotes it means `toString` has been called on the preceding expression.*[m
-[32m+[m[32mThe library exports a single constructor function, [`BigNumber`](http://mikemcl.github.io/bignumber.js/#bignumber), which accepts a value of type Number, String or BigNumber,[m[41m[m
- [m
-[31m-The library exports a single function: `BigNumber`, the constructor of BigNumber instances.[m
-[32m+[m[32m```javascript[m[41m[m
-[32m+[m[32mlet x = new BigNumber(123.4567);[m[41m[m
-[32m+[m[32mlet y = BigNumber('123456.7e-3');[m[41m[m
-[32m+[m[32mlet z = new BigNumber(x);[m[41m[m
-[32m+[m[32mx.isEqualTo(y) && y.isEqualTo(z) && x.isEqualTo(z);      // true[m[41m[m
-[32m+[m[32m```[m[41m[m
- [m
-[31m-It accepts a value of type Number, String or BigNumber,[m
-[32m+[m[32mTo get the string value of a BigNumber use [`toString()`](http://mikemcl.github.io/bignumber.js/#toS) or [`toFixed()`](http://mikemcl.github.io/bignumber.js/#toFix). Using `toFixed()` prevents exponential notation being returned, no matter how large or small the value.[m[41m[m
- [m
- ```javascript[m
-[31m-x = new BigNumber(123.4567)[m
-[31m-y = BigNumber('123456.7e-3')[m
-[31m-z = new BigNumber(x)[m
-[31m-x.isEqualTo(y) && y.isEqualTo(z) && x.isEqualTo(z)      // true[m
-[32m+[m[32mlet x = new BigNumber('1111222233334444555566');[m[41m[m
-[32m+[m[32mx.toString();                       // "1.111222233334444555566e+21"[m[41m[m
-[32m+[m[32mx.toFixed();                        // "1111222233334444555566"[m[41m[m
- ```[m
- [m
-[31m-and a base can be specified.[m
-[32m+[m[32mIf the limited precision of Number values is not well understood, it is recommended to create BigNumbers from String values rather than Number values to avoid a potential loss of precision.[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m*In all further examples below, `let`, semicolons and `toString` calls are not shown. If a commented-out value is in quotes it means `toString` has been called on the preceding expression.*[m[41m[m
- [m
- ```javascript[m
-[31m-a = new BigNumber(1011, 2)          // "11"[m
-[31m-b = new BigNumber('zz.9', 36)       // "1295.25"[m
-[31m-c = x.plus(y)                       // "1306.25"[m
-[32m+[m[32m// Precision loss from using numeric literals with more than 15 significant digits.[m[41m[m
-[32m+[m[32mnew BigNumber(1.0000000000000001)         // '1'[m[41m[m
-[32m+[m[32mnew BigNumber(88259496234518.57)          // '88259496234518.56'[m[41m[m
-[32m+[m[32mnew BigNumber(99999999999999999999)       // '100000000000000000000'[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m// Precision loss from using numeric literals outside the range of Number values.[m[41m[m
-[32m+[m[32mnew BigNumber(2e+308)                     // 'Infinity'[m[41m[m
-[32m+[m[32mnew BigNumber(1e-324)                     // '0'[m[41m[m
-[32m+[m[41m[m
-[32m+[m[32m// Precision loss from the unexpected result of arithmetic with Number values.[m[41m[m
-[32m+[m[32mnew BigNumber(0.7 + 0.1)                  // '0.7999999999999999'[m[41m[m
- ```[m
- [m
-[31m-Note that a BigNumber is created from a Number's decimal `toString()` value not from its underlying binary value. If the latter is required, then pass the Number's `toString(2)` value and specify base 2.[m
-[32m+[m[32mWhen creating a BigNumber from a Number, note that a BigNumber is created from a Number's decimal `toString()` value not from its underlying binary value. If the latter is required, then pass the Number's `toString(2)` value and specify base 2.[m[41m[m
- [m
- ```javascript[m
- new BigNumber(Number.MAX_VALUE.toString(2), 2)[m
-[31m-``` [m
-[32m+[m[32m```[m[41m[m
- [m
-[31m-If the limited precision of Number values is not well understood, **it is recommended to pass String values rather than Number values** to avoid a potential loss of precision.[m
-[32m+[m[32mBigNumbers can be created from values in bases from 2 to 36. See [`ALPHABET`](http://mikemcl.github.io/bignumber.js/#alphabet) to extend this range.[m[41m[m
- [m
- ```javascript[m
-[31m-// Precision loss from using numeric literals with more than 15 significant digits.   [m
-[31m-new BigNumber(1.0000000000000001);                 // '1'[m
-[31m-new BigNumber(88259496234518.57);                  // '88259496234518.56'[m
-[31m-new BigNumber(99999999999999999999);               // '100000000000000000000'[m
-[31m-[m
-[31m-// Precision loss from using numeric literals outside the range of Number values.[m
-[31m-new BigNumber(2e+308);                             // 'Infinity'[m
-[31m-new BigNumber(1e-324);                             // '0'[m
-[31m-[m
-[31m-// Precision loss from the unexpected result of arithmetic with Number values.[m
-[31m-new BigNumber(0.7 + 0.1);                          // '0.7999999999999999' [m
-[32m+[m[32ma = new BigNumber(1011, 2)          // "11"[m[41m[m
-[32m+[m[32mb = new BigNumber('zz.9', 36)       // "1295.25"[m[41m[m
-[32m+[m[32mc = a.plus(b)                       // "1306.25"[m[41m[m
- ```[m
- [m
-[32m+[m[32mPerformance is better if base 10 is NOT specified for decimal values. Only specify base 10 when it is desired that the number of decimal places of the input value be limited to the current [`DECIMAL_PLACES`](http://mikemcl.github.io/bignumber.js/#decimal-places) setting.[m[41m[m
-[32m+[m[41m[m
- A BigNumber is immutable in the sense that it is not changed by its methods.[m
- [m
- ```javascript[m
-[36m@@ -

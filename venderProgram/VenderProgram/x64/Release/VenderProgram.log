@@ -1,8 +1,0 @@
-﻿  VenderProgram.cpp
-C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\VenderProgram.cpp(73,9): warning C4101: 'productPrice': unreferenced local variable
-  Generating code
-  2 of 131 functions ( 1.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-  VenderProgram.vcxproj -> C:\Users\jeell\Projects\Programming\Gamazon\venderProgram\VenderProgram\x64\Release\VenderProgram.exe
