@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vender Dashboard</title>
+        <script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+        <link href="/assets/product_styles.css" rel='stylesheet' type='text/css' />
+    </head>
+    <body>
+        <%- include('partials/header', {request: request}); %>
+
+        <h1>Vender Dashboard</h1>
+        
+        <% const { userID } = request.session; %>
+        <% if(!userID){ %>
+            
+        <% } else { %>
+        <br>
+            <form class = "addProduct" method = "POST" action = "/vender">
+                <input type="number" name="quantity" min="1" max="99" value="1">
+                <input type = "submit" value="Add To Cart">
+            </form>
+    </body>
+</html>

@@ -12,6 +12,7 @@ var accountController = require('./controllers/accountController');
 var loginController = require('./controllers/loginController');
 var registerController = require('./controllers/registerController');
 var logoutController = require('./controllers/logoutController');
+var venderController = require('./controllers/venderController');
 var pageNotFoundController = require('./controllers/pageNotFoundController');
 
 // var headerController = require('./controllers/headerController');
@@ -20,8 +21,8 @@ var pageNotFoundController = require('./controllers/pageNotFoundController');
 /////     Get Requests    ///////
 /////////////////////////////////
 router.get('/', (request, responce) => {
-    // var {userID} = req.session;
-    // console.log(userID);
+    var {userID} = request.session;
+    console.log(userID);
     homeController(request, responce);
 });
 
@@ -30,7 +31,7 @@ router.get('/catalog', (request, responce) => {
 });
 
 router.get('/product/:id', (request, responce) => {
-    productController(request, responce, "GET");
+    productController(request, responce);
 });
 
 router.get('/product', (request, responce) => {
@@ -38,34 +39,38 @@ router.get('/product', (request, responce) => {
 });
 
 router.get('/account', (request, responce) => {
-    accountController(request, responce, "GET");
+    accountController(request, responce);
 });
 
 router.get("/login", (request, responce) => {
-    loginController(request, responce, "GET");
+    loginController(request, responce);
 });
 
 router.get("/register", (request, responce) => {
-    registerController(request, responce, "GET");
+    registerController(request, responce);
+});
+
+router.get("/vender", (request, responce) => {
+    venderController(request, responce);
 });
 
 /////////////////////////////////
 /////    Post Requests    ///////
 /////////////////////////////////
 router.post('/product/:id', urlencodedParser, (request, responce) => {
-    productController(request, responce, "POST");
+    productController(request, responce);
 });
 
 router.post("/account", urlencodedParser, (request, responce) => {
-    accountController(request, responce, "POST")
+    accountController(request, responce);
 });
 
 router.post("/login", urlencodedParser, (request, responce) => {
-    loginController(request, responce, "POST");
+    loginController(request, responce);
 });
 
 router.post("/register", urlencodedParser, (request, responce) => {
-    registerController(request, responce, "POST");
+    registerController(request, responce);
 });
 
 router.post("/logout", urlencodedParser, (request, responce) => {

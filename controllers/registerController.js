@@ -1,11 +1,11 @@
 var registerModel = require('./../models/registerModel');
 
-module.exports = function(request, responce, mode){
-    console.log("Register Controller Fired with mode " + mode);
+module.exports = function(request, responce){
+    console.log("Register Controller Fired with mode " + request.method);
     
-    if (mode == "GET") {
+    if (request.method == "GET") {
         responce.render("register", {"request": request});
-    } else if(mode == "POST") {
+    } else if(request.method == "POST") {
         registerModel.register(request.body, (isSuccessful, userID) => {
             console.log("From Register Controller: ");
             console.log("isSuccesful: " + isSuccessful);

@@ -1,11 +1,11 @@
 var loginModel = require('./../models/loginModel');
 
-module.exports = function(request, responce, mode){
-    console.log("Login Controller Fired with mode " + mode);
+module.exports = function(request, responce){
+    console.log("Login Controller Fired with mode " + request.method);
     
-    if (mode == "GET") {
+    if (request.method == "GET") {
         responce.render("login", {"request": request});
-    } else if(mode == "POST") {
+    } else if(request.method == "POST") {
         loginModel.login(request.body, (isSuccessful, userID) => {
             console.log("From Login Controller: ");
             console.log("isSuccesful: " + isSuccessful);
