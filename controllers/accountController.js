@@ -3,8 +3,10 @@ var accountModel = require('./../models/accountModel');
 module.exports = function(request, responce){
     console.log("Account Controller fired with userID " + request.session.userID);
     if (typeof request.session.userID == 'undefined') {
+        console.log("\tNo user logged in. Redirecting to login.");
         return responce.redirect("/login");
     }
+    console.log("AAAAAHAHAHAHAH");
     console.log(request.session.userID)
     if (request.method == "GET") {
         accountModel.getCart(request.session.userID, (cart) => {

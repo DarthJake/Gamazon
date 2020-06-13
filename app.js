@@ -15,6 +15,9 @@ app.set('view engine', 'ejs');
 // Static files
 app.use(express.static('./public'));
 
+// File Upload
+// app.use(express.bodyParser({ keepExtensions: true, uploadDir: '/public/assets/productImages' }));
+
 // Session
 app.use(session({
     name: "sid",

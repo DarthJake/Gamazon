@@ -21,8 +21,8 @@ var pageNotFoundController = require('./controllers/pageNotFoundController');
 /////     Get Requests    ///////
 /////////////////////////////////
 router.get('/', (request, responce) => {
-    var {userID} = request.session;
-    console.log(userID);
+    // var {userID} = request.session;
+    // console.log(userID);
     homeController(request, responce);
 });
 
@@ -75,6 +75,10 @@ router.post("/register", urlencodedParser, (request, responce) => {
 
 router.post("/logout", urlencodedParser, (request, responce) => {
     logoutController(request, responce);
+});
+
+router.post("/vender", urlencodedParser, (request, responce) => {
+    venderController(request, responce);
 });
 
 router.post("/venderImageUpload", urlencodedParser, (request, responce) =>{

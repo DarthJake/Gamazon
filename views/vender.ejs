@@ -10,14 +10,18 @@
 
         <h1>Vender Dashboard</h1>
         
-        <% const { userID } = request.session; %>
-        <% if(!userID){ %>
-            
-        <% } else { %>
         <br>
-            <form class = "addProduct" method = "POST" action = "/vender">
-                <input type="number" name="quantity" min="1" max="99" value="1">
-                <input type = "submit" value="Add To Cart">
+            <form class = "addProduct" method = "POST" action = "/vender" enctype="multipart/form-data">
+                <fieldset>
+                    <legend>New Product:</legend>
+                    Name: <input type = "text" name="prod_name" required><br>
+                    Price: <input type = "number" name="prod_price" min="0.01" max="1000000" step="0.01" value="10" required><br>
+                    Manufacturer: <input type = "text" name="prod_manufacturer" required><br>
+                    Description: <input type = "text" name="prod_description" required><br>
+                    Origin: <input type = "text" name="prod_origin" required><br>
+                    Image: <input type="file" name="image_file" required><br>
+                    <input type = "submit" value="!Add New Product!"><br>
+                </fieldset>
             </form>
     </body>
 </html>
