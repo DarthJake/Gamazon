@@ -9,11 +9,18 @@
         <%- include('partials/header', {request: request}); %>
         <h1>Catalog Page <%= page %></h1>
 
+        <a href="/catalog/?page=<%= (parseInt(page) - 1) %>">Previous Page</a> |
+        <a href="/catalog/?page=<%= (parseInt(page) + 1) %>">Next Page</a>
+
+        <hr>
+
         <% for (var product of productIDs) { %>
             <%- include('partials/catalogProduct', {"product_id": product.product_id}); %>
         <% } %>
+
+        <hr>
+
+        <a href="/catalog/?page=<%= (parseInt(page) - 1) %>">Previous Page</a> |
+        <a href="/catalog/?page=<%= (parseInt(page) + 1) %>">Next Page</a>
     </body>
-    <footer>
-        <a href="/catalog/?page=<%= page + 1 %>"><p>Next Page</p></a>
-    </footer>
 </html>
