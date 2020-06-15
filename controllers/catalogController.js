@@ -5,7 +5,7 @@ module.exports = function(request, response){
     
     // Checks validity of requested page number
     var page = request.query.page;
-    if (typeof(page) == 'undefined' || typeof(page) != 'number' || page < 1) {
+    if (typeof(page) == 'undefined' || !parseInt(page) || page < 1) {
         page = 1;
         console.log("\tSince page was undefined/less than 1, it's now 1.");
     }
