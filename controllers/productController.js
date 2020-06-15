@@ -1,17 +1,15 @@
 var productModel = require('./../models/productModel');
 
-module.exports = function (request, responce) {
+module.exports = function (request, response) {
     console.log("Product Controller Fired with id " + request.params.id + " and mode: " + request.method);
 
-    if (request.method == "GET") {
+    if (request.method == "GET") { // Handle GET request
         productModel.getProduct(request.params.id, (data) => {
-            console.log("From Product Controller getProduct: ");
-            responce.render('product', { "data": data, "request": request });
+            response.render('product', { "data": data, "request": request });
         });
-    } else if (request.method == "POST") {
+    } else if (request.method == "POST") { // Handle POST request
         productModel.addToCart(request.session.userID, request.params.id, request.body.quantity, () => {
-            console.log("From Product Controller getProduct: ");
-            responce.redirect("/catalog");
+            response.redirect("/catalog");
         });
     }
 

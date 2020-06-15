@@ -1,25 +1,22 @@
 var db = require('./../database');
 
-var getIsVenderAccount = function (user_id, callback) {
-    console.log('Vender Model getIsVenderAccount called with user_id: ' + user_id);
+// Returns whether or not a user is a vender
+var getIsVenderAccount = function (userID, callback) {
+    console.log('Vender Model getIsVenderAccount called with userID: ' + userID);
 
-    db.query(`SELECT is_vender FROM users WHERE user_id = ${user_id};`, (err, results, fields) => {
+    db.query(`SELECT is_vender FROM users WHERE userID = ${userID};`, (err, results, fields) => {
         if (err) {
             throw err;
         }
-        console.log("Is Vender: " + results[0].is_vender);
+
+        console.log("\tResults: " + results[0].is_vender);
+
+        console.log("Returning to Vender Controller with callback.");
         return callback(results[0].is_vender);
-
-        // console.log("From Vender Module: ");
-
-        // console.log("Is Vender: " + results[0].is_vender);
-        // console.log("Type: " + typeof(results[0].is_vender))
-        // console.log("Test: " + Object.keys(results[0].is_vender));
-        
-        // return callback(results[0].is_vender);
     });
 }
 
+// Returns the largest product ID in the database
 var getLargestProductID = function (callback) {
     console.log('Vender Model getLargestProductID called');
 
@@ -27,11 +24,15 @@ var getLargestProductID = function (callback) {
         if (err) {
             throw err;
         }
-        console.log("Largest ID: " + results[0].product_id);
+
+        console.log("\tResults: " + results[0].product_id);
+
+        console.log("Returning to Vender Controller with callback.");
         return callback(results[0].product_id);
     });
 }
 
+// Adds a product to the database
 var addProduct = function (prod_name, prod_price, prod_manufacturer, prod_description, prod_origin, callback) {
     console.log('Vender Model addProduct called');
 
@@ -42,12 +43,14 @@ var addProduct = function (prod_name, prod_price, prod_manufacturer, prod_descri
             '${prod_manufacturer}',
             '${prod_description}',
             '${prod_origin}'
-          );`, (err, results, fields) => {
+            );`, (err, results, fields) => {
         if (err) {
             throw err;
         }
 
-        console.log(results);
+        console.log("\tResults: " + results);
+
+        console.log("Returning to Vender Controller with callback.");
         return callback();
     });
 }

@@ -1,20 +1,21 @@
 var registerModel = require('./../models/registerModel');
 
-module.exports = function(request, responce){
+module.exports = function(request, response){
     console.log("Register Controller Fired with mode " + request.method);
     
-    if (request.method == "GET") {
-        responce.render("register", {"request": request});
-    } else if(request.method == "POST") {
+    if (request.method == "GET") { // Handle GET request
+        response.render("register", {"request": request});
+    } else if(request.method == "POST") { // Handle POST request
         registerModel.register(request.body, (isSuccessful, userID) => {
-            console.log("From Register Controller: ");
-            console.log("isSuccesful: " + isSuccessful);
             if(isSuccessful) {
-                request.session.userID = userID;
-                responce.redirect('/');
+                console.log("\tSuccessfully Registered");
+
+                request.session.userID = userID; // Also logs the user in.
+                response.redirect('/');
             } else {
-                // Potential for error messaging system with querry string, etc
-                responce.render("register", {"request": request});
+                console.log("\tUnsuccessfully Registered");
+
+                response.render("register", {"request": request});
             }
         });
     }

@@ -20,82 +20,82 @@ var pageNotFoundController = require('./controllers/pageNotFoundController');
 /////////////////////////////////
 /////     Get Requests    ///////
 /////////////////////////////////
-router.get('/', (request, responce) => {
+router.get('/', (request, response) => {
     // var {userID} = request.session;
     // console.log(userID);
-    homeController(request, responce);
+    homeController(request, response);
 });
 
-router.get('/catalog', (request, responce) => {
-    catalogController(request, responce);
+router.get('/catalog', (request, response) => {
+    catalogController(request, response);
 });
 
-router.get('/product/:id', (request, responce) => {
-    productController(request, responce);
+router.get('/product/:id', (request, response) => {
+    productController(request, response);
 });
 
-router.get('/product', (request, responce) => {
-    responce.redirect("/catalog");
+router.get('/product', (request, response) => {
+    response.redirect("/catalog");
 });
 
-router.get('/account', (request, responce) => {
-    accountController(request, responce);
+router.get('/account', (request, response) => {
+    accountController(request, response);
 });
 
-router.get("/login", (request, responce) => {
-    loginController(request, responce);
+router.get("/login", (request, response) => {
+    loginController(request, response);
 });
 
-router.get("/register", (request, responce) => {
-    registerController(request, responce);
+router.get("/register", (request, response) => {
+    registerController(request, response);
 });
 
-router.get("/vender", (request, responce) => {
-    venderController(request, responce);
+router.get("/vender", (request, response) => {
+    venderController(request, response);
 });
 
 /////////////////////////////////
 /////    Post Requests    ///////
 /////////////////////////////////
-router.post('/product/:id', urlencodedParser, (request, responce) => {
-    productController(request, responce);
+router.post('/product/:id', urlencodedParser, (request, response) => {
+    productController(request, response);
 });
 
-router.post("/account", urlencodedParser, (request, responce) => {
-    accountController(request, responce);
+router.post("/account", urlencodedParser, (request, response) => {
+    accountController(request, response);
 });
 
-router.post("/login", urlencodedParser, (request, responce) => {
-    loginController(request, responce);
+router.post("/login", urlencodedParser, (request, response) => {
+    loginController(request, response);
 });
 
-router.post("/register", urlencodedParser, (request, responce) => {
-    registerController(request, responce);
+router.post("/register", urlencodedParser, (request, response) => {
+    registerController(request, response);
 });
 
-router.post("/logout", urlencodedParser, (request, responce) => {
-    logoutController(request, responce);
+router.post("/logout", urlencodedParser, (request, response) => {
+    logoutController(request, response);
 });
 
-router.post("/vender", urlencodedParser, (request, responce) => {
-    venderController(request, responce);
+router.post("/vender", urlencodedParser, (request, response) => {
+    venderController(request, response);
 });
 
-router.post("/venderImageUpload", urlencodedParser, (request, responce) =>{
+router.post("/venderImageUpload", urlencodedParser, (request, response) =>{
     // var keyName1=request.body;
     // console.log(request.files.pictureFile);
     if (!request.files || Object.keys(request.files).length === 0) {
-        return responce.status(400).send('No files were uploaded.\n\n');
+        return response.status(400).send('No files were uploaded.\n\n');
     }
 
     let pictureFile = request.files.pictureFile;
 
     pictureFile.mv('./pictureFile.jpg', function(err) {
         if (err){
-          return responce.status(500).send(err);
+          return response.status(500).send(err);
         }
     
-        responce.send('File uploaded!');
+        response.send('File uploaded!');
     });
 });
 
@@ -103,8 +103,8 @@ router.post("/venderImageUpload", urlencodedParser, (request, responce) =>{
 /////         404         ///////
 /////////////////////////////////
 // Keep as the last call
-// router.use(function(request, responce){ // Is being BUGGYYYY!!!
-//     pageNotFoundController(request, responce);
+// router.use(function(request, response){ // Is being BUGGYYYY!!!
+//     pageNotFoundController(request, response);
 // });
 
 //export the router

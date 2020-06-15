@@ -1,26 +1,23 @@
 var accountModel = require('./../models/accountModel');
 
-module.exports = function(request, responce){
-    console.log("Account Controller fired with userID " + request.session.userID);
+module.exports = function(request, response){
+    console.log("Account Controller fired with userID " + request.session.userID + " and mode: " + request.method);
+    
+    // Check to see if a user is logged in and redirect to login if not
     if (typeof request.session.userID == 'undefined') {
         console.log("\tNo user logged in. Redirecting to login.");
-        return responce.redirect("/login");
+        return response.redirect("/login");
     }
-    console.log("AAAAAHAHAHAHAH");
-    console.log(request.session.userID)
-    if (request.method == "GET") {
+
+    if (request.method == "GET") { // Handle a GET request
         accountModel.getCart(request.session.userID, (cart) => {
-            console.log("Account Controller get mode");
-            console.log(cart);
-            console.log(typeof cart);
-            responce.render('account', {"cart": cart, "request": request});
+            response.render('account', {"cart": cart, "request": request});
         });
-    } else if (request.method == "POST") {
-        console.log("Account Controller post mode");
+    } else if (request.method == "POST") { // Handle a POST request
         // All this actually does is delete all the items from the users cart.
-        // I dont really want to make a full on payment system right now.
-        accountModel.purchase(request.session.userID);
-        responce.redirect('/');
+        // I don't really want to make a full on payment system right now.
+        accountModel.purchase(request.session.userID); // No need for callback
+        response.redirect('/');
     }
 
     

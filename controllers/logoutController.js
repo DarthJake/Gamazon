@@ -1,11 +1,11 @@
-module.exports = function(request, responce){
-    console.log("Logout Controller fired for user " + request.session.userID);
+module.exports = function(request, response){
+    console.log("Logout Controller fired for user id: " + request.session.userID);
     request.session.destroy(err => {
         if (err) {
-            return responce.redirect("/");
+            return response.redirect("/");
         }
 
-        responce.clearCookie("sid");// "sid" is set in app.js
-        responce.redirect("/");
+        response.clearCookie("sid"); // "sid" is set in app.js as the session ID cookie
+        response.redirect("/");
     })
 }

@@ -1,5 +1,4 @@
-module.exports = function(request, responce){
+module.exports = function(request, response){
     console.log("Home Controller Fired");
-    responce.render('home', {"request": request});
-
+    response.render('home', {"request": request});
 }
