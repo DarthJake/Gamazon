@@ -22,7 +22,7 @@ With these three I have my database, frontend, and backend chosen. There are a c
 
 MVC stand for Model View Controller. It is a software design pattern that helps to organize your code. I am going to use it in this project mainly to get some experience with it.
 
-![MVC Diagram](public\assets\mvc_diagram_with_routes.png)
+![MVC Diagram](public/assets/mvc_diagram_with_routes.png)
 
 - Model
   - Data related
